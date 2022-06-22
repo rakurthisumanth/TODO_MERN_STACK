@@ -18,15 +18,26 @@ router.post("/post",async(req,res)=>{
     try{
 
         const a1=await firsts.create({
-           ...req.body
+        ...req.body
         })
         res.json(a1)
-
     }
     catch(err){
         res.send("error ",err)
 
     }
+})
+
+router.delete("/delete/:id",async(req,res)=>{
+    try{
+        const deleteItem= await firsts.deleteOne({_id:req.params.id})
+        res.send(deleteItem)
+    }
+    catch(err){
+        console.log(err)
+
+    }
+    
 })
 
 module.exports=router
